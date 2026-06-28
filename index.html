@@ -55,14 +55,16 @@
 
           <div id="card" class="card">
             <div class="card-front">
+              <span class="card-direction" id="card-direction" hidden></span>
               <span class="card-pos" id="card-front-pos"></span>
               <span class="word" id="card-word"></span>
-              <span class="flip-hint">Tap to reveal</span>
+              <span class="flip-hint" id="flip-hint">Tap to reveal</span>
             </div>
             <div class="card-back" id="card-back" hidden>
               <p class="definition" id="card-definition"></p>
               <p class="pos" id="card-pos"></p>
               <p class="example" id="card-example"></p>
+              <p class="note" id="card-note"></p>
               <div class="related" id="card-synonyms"></div>
               <div class="related" id="card-seealso"></div>
               <img class="card-image" id="card-image" alt="" hidden />
@@ -122,6 +124,9 @@
 
           <label for="f-example">Example sentence</label>
           <textarea id="f-example" rows="2" placeholder="El perro corre en el parque."></textarea>
+
+          <label for="f-note">Note (optional)</label>
+          <textarea id="f-note" rows="2" placeholder="Any hint, mnemonic, or reminder."></textarea>
 
           <label for="f-synonym-input">Synonyms</label>
           <div class="chip-row">
@@ -185,6 +190,14 @@
 
       <!-- ============================ BACKUP ============================ -->
       <section id="view-backup" class="view" aria-label="Backup" hidden>
+        <h2>Study options</h2>
+        <label class="toggle-row">
+          <input type="checkbox" id="opt-reverse" />
+          Sometimes show the English side first, so you recall the Spanish term.
+        </label>
+
+        <hr />
+
         <h2>Backup &amp; restore</h2>
         <p class="backup-note">
           Your deck lives only on this device. The JSON export is your real backup — do it often.

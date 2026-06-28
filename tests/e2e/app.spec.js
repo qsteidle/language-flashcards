@@ -16,6 +16,56 @@ async function addCard(page, word, definition) {
 }
 
 test.describe('Fichas app', () => {
+  test('each mode is a distinct view with no overlap', async ({ page }) => {
+    await page.goto('/');
+    await waitReady(page);
+
+    // Study active, others hidden.
+    await expect(page.locator('#view-study')).toBeVisible();
+    await expect(page.locator('#view-editor')).toBeHidden();
+    await expect(page.locator('#view-backup')).toBeHidden();
+
+    await page.getByRole('button', { name: 'Editor', exact: true }).click();
+    await expect(page.locator('#view-study')).toBeHidden();
+    await expect(page.locator('#view-editor')).toBeVisible();
+    await expect(page.locator('#view-backup')).toBeHidden();
+
+    await page.getByRole('button', { name: 'Backup', exact: true }).click();
+    await expect(page.locator('#view-study')).toBeHidden();
+    await expect(page.locator('#view-editor')).toBeHidden();
+    await expect(page.locator('#view-backup')).toBeVisible();
+  });
+
+  test('card list is alphabetized ignoring leading articles', async ({ page }) => {
+    await page.goto('/');
+    await addCard(page, 'el perro', 'the dog');
+    await addCard(page, 'la casa', 'the house');
+    await addCard(page, 'correr', 'to run');
+
+    const words = await page.locator('#card-list .card-row-word').allTextContents();
+    // casa (la), correr, perro (el)
+    expect(words).toEqual(['la casa', 'correr', 'el perro']);
+  });
+
+  test('note field saves and shows on the card back', async ({ page }) => {
+    await page.goto('/');
+    await waitReady(page);
+    await page.getByRole('button', { name: 'Editor', exact: true }).click();
+    await page.locator('#f-word').fill('aún');
+    await page.locator('#f-definition').fill('still / yet');
+    await page.locator('#f-note').fill('accent distinguishes it from aun');
+    await page.locator('#f-save').click();
+    await expect(page.locator('#card-list')).toContainText('aún');
+
+    // Turn off reverse so the front is the Spanish word and the note shows on flip.
+    await page.getByRole('button', { name: 'Backup', exact: true }).click();
+    await page.locator('#opt-reverse').uncheck();
+    await page.getByRole('button', { name: 'Study', exact: true }).click();
+    await page.locator('#start-session').click();
+    await page.locator('#flip-btn').click();
+    await expect(page.locator('#card-note')).toContainText('accent distinguishes');
+  });
+
   test('creates cards that survive a reload (IndexedDB persistence)', async ({ page }) => {
     await page.goto('/');
     await addCard(page, 'el perro', 'the dog');
@@ -106,6 +156,9 @@ test.describe('Fichas app', () => {
     await page.goto('/');
     await addCard(page, 'gracias', 'thank you');
 
+    // Disable reverse so the front is deterministically the Spanish term.
+    await page.getByRole('button', { name: 'Backup', exact: true }).click();
+    await page.locator('#opt-reverse').uncheck();
     await page.getByRole('button', { name: 'Study', exact: true }).click();
     await page.locator('#start-session').click();
     await expect(page.locator('#card-word')).toHaveText('gracias');

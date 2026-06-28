@@ -14,6 +14,7 @@ const DEFAULTS = Object.freeze({
   showProjectedIntervals: true,
   lastExportAt: null, // ISO string of last export, for the "export reminder"
   installHintDismissed: false,
+  reverseCards: true, // sometimes prompt with the English side first (recall Spanish)
 });
 
 function hasStorage() {

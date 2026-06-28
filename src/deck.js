@@ -55,6 +55,7 @@ export function createCard(fields, sessionCounter = 0) {
     definition: fields.definition ?? '',
     pos: fields.pos ?? 'other',
     example: fields.example ?? '',
+    note: fields.note ?? '',
     synonyms: Array.isArray(fields.synonyms) ? fields.synonyms.slice() : [],
     seeAlso: Array.isArray(fields.seeAlso) ? fields.seeAlso.slice() : [],
     imageId: fields.imageId ?? null,
@@ -66,6 +67,22 @@ export function createCard(fields, sessionCounter = 0) {
 
 export function findCard(deck, cardId) {
   return deck.cards.find((c) => c.id === cardId) || null;
+}
+
+// Leading Spanish articles to ignore when alphabetizing (nouns carry these;
+// verbs and adjectives don't, so they sort by their own first letter).
+const LEADING_ARTICLE = /^(el|la|los|las|un|una|unos|unas)\s+/i;
+
+/** Sort key for a card's word: lowercased, with any leading article stripped. */
+export function cardSortKey(card) {
+  return (card.word || '').trim().replace(LEADING_ARTICLE, '').toLowerCase();
+}
+
+/** Cards sorted alphabetically by word, ignoring leading articles (es locale). */
+export function sortCardsByWord(cards) {
+  return cards
+    .slice()
+    .sort((a, b) => cardSortKey(a).localeCompare(cardSortKey(b), 'es', { sensitivity: 'base' }));
 }
 
 /**

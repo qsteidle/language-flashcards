@@ -8,6 +8,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Optional **Note** field per card (editor textarea, shown on the card back,
+  included in search and the JSON export).
+- **Reverse study direction:** cards are sometimes shown English-side-first so
+  you recall the Spanish term (~30% of cards). Toggle under Backup → Study
+  options; on by default.
+- Card list is **alphabetized by word, ignoring leading Spanish articles**
+  (el/la/los/las/un/una/unos/unas); verbs and adjectives sort by their own
+  first letter. Locale-aware (es) comparison.
+
+### Fixed
+
+- Tab views no longer overlap: a `.view { display: block }` rule was overriding
+  the `hidden` attribute, so all three modes rendered at once. The `hidden`
+  attribute now always wins.
+
+### Added (initial build)
+
 - Project scaffold: plain HTML/CSS/ES-modules app, no build step.
 - Tooling: ESLint (flat config), Prettier, Vitest, Playwright (WebKit), a
   zero-dependency static dev server, and grep guards for hardcoded audio MIME

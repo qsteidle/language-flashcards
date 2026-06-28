@@ -47,6 +47,11 @@
   box-sizing: border-box;
 }
 
+/* The hidden attribute must always win over later display rules. */
+[hidden] {
+  display: none !important;
+}
+
 html {
   -webkit-text-size-adjust: 100%;
 }
@@ -142,10 +147,6 @@ body {
   max-width: var(--maxw);
   margin: 0 auto;
   padding: 1rem;
-}
-
-.view {
-  display: block;
 }
 
 /* -------------------------------------------------------------- buttons */
@@ -294,6 +295,20 @@ button:disabled {
 .card-back .example {
   font-style: italic;
   margin: 0 0 0.5rem;
+}
+.card-back .note {
+  color: var(--text-dim);
+  margin: 0 0 0.5rem;
+}
+.card-direction {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+  background: var(--accent);
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
 }
 .related {
   color: var(--text-dim);
@@ -538,6 +553,18 @@ button:disabled {
 .storage-readout,
 .persist-status {
   color: var(--text-dim);
+}
+.toggle-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  line-height: 1.4;
+}
+.toggle-row input[type='checkbox'] {
+  width: 1.4rem;
+  height: 1.4rem;
+  margin-top: 0.1rem;
+  flex-shrink: 0;
 }
 .import-mode {
   border: 1px solid var(--border);

@@ -10,6 +10,7 @@ import {
   setArchived,
   deleteCard,
   emptyTally,
+  sortCardsByWord,
   COMMON_POS,
 } from './deck.js';
 import { RATING_LABELS, projectInterval } from './scheduler.js';
@@ -33,6 +34,8 @@ import { startRecording, audioRecordingSupported } from './audio.js';
 
 const $ = (id) => document.getElementById(id);
 const EXPORT_REMINDER_MS = 7 * 24 * 60 * 60 * 1000;
+// Fraction of cards shown English-side-first when the reverse option is on.
+const REVERSE_PROBABILITY = 0.3;
 
 let deck = null;
 
@@ -40,6 +43,7 @@ const study = {
   queue: [], // remaining card ids this session
   current: null, // current card id
   flipped: false,
+  reversed: false, // current card shown English-side-first
   tally: emptyTally(),
   audioUrl: null,
 };
@@ -167,8 +171,23 @@ function showNextCard() {
   study.flipped = false;
   const card = findCard(deck, study.current);
 
-  $('card-front-pos').textContent = card.pos || '';
-  $('card-word').textContent = card.word;
+  // Sometimes prompt with the English side first so the user recalls the Spanish.
+  study.reversed = getPrefs().reverseCards && Math.random() < REVERSE_PROBABILITY;
+
+  const direction = $('card-direction');
+  if (study.reversed) {
+    direction.textContent = 'English → Spanish';
+    direction.hidden = false;
+    $('card-front-pos').textContent = '';
+    $('card-word').textContent = card.definition;
+    $('flip-hint').textContent = 'Recall the Spanish, then tap';
+  } else {
+    direction.hidden = true;
+    $('card-front-pos').textContent = card.pos || '';
+    $('card-word').textContent = card.word;
+    $('flip-hint').textContent = 'Tap to reveal';
+  }
+
   $('card-back').hidden = true;
   $('rating-buttons').hidden = true;
   $('flip-btn').hidden = false;
@@ -183,9 +202,13 @@ async function flipCard() {
   study.flipped = true;
   const card = findCard(deck, study.current);
 
-  $('card-definition').textContent = card.definition || '';
+  // The answer is whichever side was NOT shown on the front.
+  $('card-definition').textContent = study.reversed ? card.word : card.definition || '';
   $('card-pos').textContent = card.pos ? `(${card.pos})` : '';
   $('card-example').textContent = card.example || '';
+  const note = $('card-note');
+  note.textContent = card.note ? `Note: ${card.note}` : '';
+  note.hidden = !card.note;
 
   const syn = $('card-synonyms');
   syn.textContent = card.synonyms.length ? `Synonyms: ${card.synonyms.join(', ')}` : '';
@@ -345,6 +368,7 @@ function resetEditorForm() {
   $('f-definition').value = '';
   $('f-pos').value = 'noun';
   $('f-example').value = '';
+  $('f-note').value = '';
   $('f-synonym-input').value = '';
   $('f-seealso-input').value = '';
   $('f-image').value = '';
@@ -387,6 +411,7 @@ async function startEditingCard(id) {
   $('f-definition').value = card.definition;
   $('f-pos').value = card.pos || 'other';
   $('f-example').value = card.example;
+  $('f-note').value = card.note || '';
   $('f-cancel').hidden = false;
   renderChips($('f-synonyms'), editor.synonyms, 'syn');
   renderChips($('f-seealso'), editor.seeAlso, 'see');
@@ -417,6 +442,7 @@ async function saveCard() {
     definition,
     pos: $('f-pos').value,
     example: $('f-example').value.trim(),
+    note: $('f-note').value.trim(),
     synonyms: editor.synonyms.slice(),
     seeAlso: editor.seeAlso.slice(),
   };
@@ -464,7 +490,7 @@ async function saveCard() {
 
 function cardMatchesSearch(card, q) {
   if (!q) return true;
-  const hay = [card.word, card.definition, card.pos, ...card.synonyms, ...card.seeAlso]
+  const hay = [card.word, card.definition, card.pos, card.note, ...card.synonyms, ...card.seeAlso]
     .join(' ')
     .toLowerCase();
   return hay.includes(q);
@@ -475,11 +501,13 @@ function renderCardList() {
   const list = $('card-list');
   list.textContent = '';
 
-  const cards = deck.cards.filter((c) => {
-    if (cardFilter === 'active' && c.archived) return false;
-    if (cardFilter === 'archived' && !c.archived) return false;
-    return cardMatchesSearch(c, q);
-  });
+  const cards = sortCardsByWord(
+    deck.cards.filter((c) => {
+      if (cardFilter === 'active' && c.archived) return false;
+      if (cardFilter === 'archived' && !c.archived) return false;
+      return cardMatchesSearch(c, q);
+    })
+  );
 
   $('card-list-empty').hidden = cards.length > 0 || deck.cards.length === 0;
   if (deck.cards.length === 0) $('card-list-empty').hidden = false;
@@ -541,6 +569,7 @@ function mkBtn(label, cls, onClick) {
 // ---------------------------------------------------------------- backup mode
 
 async function refreshBackup() {
+  $('opt-reverse').checked = getPrefs().reverseCards;
   const last = getPrefs().lastExportAt;
   $('last-export').textContent = last
     ? `Last export: ${new Date(last).toLocaleString()}`
@@ -733,6 +762,11 @@ function wireEvents() {
       renderCardList();
     });
   }
+
+  // Study options
+  $('opt-reverse').addEventListener('change', () => {
+    setPref('reverseCards', $('opt-reverse').checked);
+  });
 
   // Backup
   $('export-btn').addEventListener('click', doExport);
