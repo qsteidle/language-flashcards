@@ -38,3 +38,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - PWA: `manifest.json`, generated PNG + SVG icons (`scripts/make-icons.js`),
   `service-worker.js` precaching the app shell for offline, and an iOS
   add-to-home-screen hint.
+- End-to-end tests (Playwright/WebKit): IndexedDB persistence across reload,
+  audio blob round-trip, `QuotaExceededError` messaging, audio MIME
+  feature-detection, service-worker shell precache for offline, and axe-core
+  accessibility checks on all three screens.
+- Optional `.githooks/pre-commit`: requires a CHANGELOG update and runs the fast
+  checks.
+
+### Changed
+
+- Media (audio/images) is persisted as a native `ArrayBuffer` + MIME type rather
+  than as a Blob. Still binary (no base64 inflation), still surfaced to callers
+  as Blobs, and it avoids a Blob-in-IndexedDB serialization bug in some WebKit
+  builds. The base64-inlined JSON export is unchanged.

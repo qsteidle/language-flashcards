@@ -99,10 +99,19 @@ function txDone(transaction) {
 
 // ---------- Deck ----------
 
+function safePut(store, value, key) {
+  try {
+    return key === undefined ? store.put(value) : store.put(value, key);
+  } catch (err) {
+    // Some engines throw synchronously on quota; normalize it.
+    throw isQuotaError(err) ? new QuotaError(err.message || 'Storage quota exceeded') : err;
+  }
+}
+
 export async function saveDeck(deck) {
   const db = await openDB();
   const t = tx(db, ['deck'], 'readwrite');
-  t.objectStore('deck').put(deck, DECK_KEY);
+  safePut(t.objectStore('deck'), deck, DECK_KEY);
   await txDone(t);
   return deck;
 }
@@ -124,11 +133,17 @@ export async function loadOrCreateDeck() {
 }
 
 // ---------- Media ----------
+//
+// Media is stored as a raw ArrayBuffer (plus its MIME type), not as a Blob.
+// This is still native binary storage with no base64 inflation, and it sidesteps
+// a Blob-in-IndexedDB serialization bug in some WebKit builds. Callers still work
+// in Blobs: getMedia reconstructs `{ id, blob, type }` on read.
 
 async function putMedia(storeName, id, blob) {
+  const buffer = await blob.arrayBuffer();
   const db = await openDB();
   const t = tx(db, [storeName], 'readwrite');
-  t.objectStore(storeName).put({ id, blob, type: blob.type });
+  safePut(t.objectStore(storeName), { id, data: buffer, type: blob.type });
   await txDone(t);
   return id;
 }
@@ -138,7 +153,8 @@ async function getMedia(storeName, id) {
   const db = await openDB();
   const t = tx(db, [storeName], 'readonly');
   const rec = await reqToPromise(t.objectStore(storeName).get(id));
-  return rec || null;
+  if (!rec) return null;
+  return { id: rec.id, type: rec.type, blob: new Blob([rec.data], { type: rec.type }) };
 }
 
 async function deleteMedia(storeName, id) {

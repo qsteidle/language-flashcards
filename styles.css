@@ -273,6 +273,15 @@ button:disabled {
   cursor: default;
   text-align: left;
 }
+.card.is-flipped .flip-hint {
+  display: none;
+}
+.card.is-flipped .card-front {
+  align-items: flex-start;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
 .card-back .definition {
   font-size: 1.5rem;
   font-weight: 600;

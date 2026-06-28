@@ -1,0 +1,15 @@
+#!/bin/sh
+# Pre-commit guard. Enable once with:  git config core.hooksPath .githooks
+#
+# Fails the commit if CHANGELOG.md was not updated, then runs the fast checks
+# (lint, format, grep guards, unit tests). Run the slower E2E suite (npm run
+# test:e2e) before pushing.
+
+if ! git diff --cached --name-only | grep -q '^CHANGELOG.md$'; then
+  echo "pre-commit: CHANGELOG.md was not modified in this commit." >&2
+  echo "Add an entry under '## [Unreleased]' so the log never drifts from reality." >&2
+  exit 1
+fi
+
+echo "pre-commit: running lint, format, guards, and unit tests…"
+npm run check:all

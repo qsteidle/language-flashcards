@@ -15,6 +15,8 @@ export default [
         localStorage: 'readonly',
         indexedDB: 'readonly',
         IDBKeyRange: 'readonly',
+        IDBObjectStore: 'readonly',
+        DOMException: 'readonly',
         Blob: 'readonly',
         File: 'readonly',
         FileReader: 'readonly',

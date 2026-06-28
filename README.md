@@ -47,6 +47,11 @@ home screen_. Installing it makes your deck durable. Even so, export regularly.
 
 - Your deck (cards + audio + images) is stored in **IndexedDB** on the device.
   `localStorage` is used only for tiny UI preferences, never for cards or media.
+- Media is stored as native binary (an `ArrayBuffer` plus its MIME type), not as
+  base64, so there is no ~33% size inflation. The app works in Blobs everywhere
+  else; this is just the on-disk representation, which also avoids a Blob-in-
+  IndexedDB serialization bug in some WebKit builds. The JSON **export** still
+  uses base64 so the backup file is self-contained and text-portable.
 - iOS can evict storage after ~7 days of non-use if the app is _not_ installed to
   the home screen (see above).
 - **The JSON export is the true backup.** Use Backup → Export periodically and
@@ -99,8 +104,27 @@ dueAtSession = sessionCounter + interval
 | `npm run check:forms`  | Fails if a native-submit `<form>` exists in `index.html`.         |
 | `npm run check:all`    | Lint + format check + guards + unit tests (fast pre-commit set).  |
 
-The first `npm run test:e2e` will download the Playwright WebKit browser
-(`npx playwright install webkit`).
+The first `npm run test:e2e` needs the Playwright WebKit browser — install it
+once with `npx playwright install webkit`.
+
+### Optional pre-commit hook
+
+```bash
+git config core.hooksPath .githooks
+```
+
+This fails any commit that does not touch `CHANGELOG.md` and then runs the fast
+checks (lint, format, grep guards, unit tests). Run `npm run test:e2e` before
+pushing.
+
+### E2E coverage (Playwright, WebKit ≈ iOS Safari)
+
+- IndexedDB persistence across reload; audio blob round-trip (size + type).
+- `QuotaExceededError` surfaces a clear export/free-space message, no crash.
+- Audio MIME feature-detection picks by preference and never hardcodes WebM.
+- Service worker registers, controls the page, and precaches the full app shell
+  for offline use.
+- axe-core finds no critical/serious WCAG 2 A/AA violations on any screen.
 
 ### Unit test coverage (replaces manual iPhone testing for the core)
 
