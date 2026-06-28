@@ -581,6 +581,25 @@ button:disabled {
 .persist-status {
   color: var(--text-dim);
 }
+.slider-row {
+  margin-bottom: 1rem;
+}
+.slider-row label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+.slider-value {
+  color: var(--accent);
+  font-weight: 700;
+}
+.slider-row input[type='range'] {
+  width: 100%;
+  height: var(--tap);
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
 .toggle-row {
   display: flex;
   align-items: flex-start;

@@ -11,7 +11,6 @@ import {
   deleteCard,
   emptyTally,
   sortCardsByWord,
-  SESSION_LIMIT,
   COMMON_POS,
 } from './deck.js';
 import { RATING_LABELS, projectInterval } from './scheduler.js';
@@ -146,12 +145,13 @@ function refreshStudyIdle() {
     (c) => !c.archived && c.stats.dueAtSession <= deck.meta.sessionCounter + 1
   ).length;
   const total = deck.cards.filter((c) => !c.archived).length;
-  const thisSession = Math.min(dueCount, SESSION_LIMIT);
+  const limit = getPrefs().sessionLimit;
+  const thisSession = Math.min(dueCount, limit);
   let summary;
   if (total === 0) {
     summary = 'No cards yet — add some in the Editor.';
-  } else if (dueCount > SESSION_LIMIT) {
-    summary = `${thisSession} cards this session (${dueCount} due, capped at ${SESSION_LIMIT}; ${total} active).`;
+  } else if (dueCount > limit) {
+    summary = `${thisSession} cards this session (${dueCount} due, capped at ${limit}; ${total} active).`;
   } else {
     summary = `${dueCount} card${dueCount === 1 ? '' : 's'} ready next session (${total} active).`;
   }
@@ -160,7 +160,7 @@ function refreshStudyIdle() {
 }
 
 async function onStartSession() {
-  study.queue = startSession(deck);
+  study.queue = startSession(deck, Math.random, getPrefs().sessionLimit);
   study.tally = emptyTally();
   await persistDeck();
   $('study-idle').hidden = true;
@@ -576,7 +576,10 @@ function mkBtn(label, cls, onClick) {
 // ---------------------------------------------------------------- backup mode
 
 async function refreshBackup() {
-  $('opt-reverse').checked = getPrefs().reverseCards;
+  const prefs = getPrefs();
+  $('opt-reverse').checked = prefs.reverseCards;
+  $('opt-session-limit').value = prefs.sessionLimit;
+  $('session-limit-value').textContent = prefs.sessionLimit;
   const last = getPrefs().lastExportAt;
   $('last-export').textContent = last
     ? `Last export: ${new Date(last).toLocaleString()}`
@@ -801,6 +804,12 @@ function wireEvents() {
   // Study options
   $('opt-reverse').addEventListener('change', () => {
     setPref('reverseCards', $('opt-reverse').checked);
+  });
+  $('opt-session-limit').addEventListener('input', () => {
+    $('session-limit-value').textContent = $('opt-session-limit').value;
+  });
+  $('opt-session-limit').addEventListener('change', () => {
+    setPref('sessionLimit', Number($('opt-session-limit').value));
   });
 
   // Backup

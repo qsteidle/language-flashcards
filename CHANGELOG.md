@@ -8,8 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Study sessions are now capped at **20 cards**. Extra due cards stay due and
-  appear in the next session; the Study screen shows when the cap is in effect.
+- **Cards-per-session slider** at the top of Utilities → Study options (5–50,
+  default 20). Sets the per-session cap; the choice is remembered.
+- Study sessions are capped by that limit. Extra due cards stay due and appear in
+  the next session; the Study screen shows when the cap is in effect.
 - **Load example deck** button in Utilities: imports a bundled Spanish baseball
   vocabulary deck (`decks/default-deck.json`, 49 cards) using the current
   merge/replace choice. Precached by the service worker so it works offline.

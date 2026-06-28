@@ -206,6 +206,12 @@
       <!-- ============================ UTILITIES ============================ -->
       <section id="view-utilities" class="view" aria-label="Utilities" hidden>
         <h2>Study options</h2>
+        <div class="slider-row">
+          <label for="opt-session-limit">
+            Cards per session: <span id="session-limit-value" class="slider-value">20</span>
+          </label>
+          <input type="range" id="opt-session-limit" min="5" max="50" step="5" value="20" />
+        </div>
         <label class="toggle-row">
           <input type="checkbox" id="opt-reverse" />
           Sometimes show the English side first, so you recall the Spanish term.

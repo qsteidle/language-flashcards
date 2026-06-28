@@ -15,6 +15,7 @@ const DEFAULTS = Object.freeze({
   lastExportAt: null, // ISO string of last export, for the "export reminder"
   installHintDismissed: false,
   reverseCards: true, // sometimes prompt with the English side first (recall Spanish)
+  sessionLimit: 20, // max cards presented per study session
 });
 
 function hasStorage() {

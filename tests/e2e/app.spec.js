@@ -96,6 +96,27 @@ test.describe('Repasito app', () => {
     await expect(page.locator('#study-progress')).toContainText('of 20');
   });
 
+  test('the cards-per-session slider changes the cap', async ({ page }) => {
+    page.on('dialog', (d) => d.accept());
+    await page.goto('/');
+    await waitReady(page);
+
+    await page.locator('#utilities-btn').click();
+    await page.locator('#load-default-btn').click();
+    await expect(page.locator('#toast')).toContainText(/Deck now has 49 cards/);
+
+    // Set the slider to 10 (min 5, max 50, step 5).
+    await page.locator('#utilities-btn').click();
+    await page.locator('#opt-session-limit').fill('10');
+    await page.locator('#opt-session-limit').dispatchEvent('change');
+    await expect(page.locator('#session-limit-value')).toHaveText('10');
+
+    await page.getByRole('button', { name: 'Study', exact: true }).click();
+    await expect(page.locator('#due-summary')).toContainText(/capped at 10/);
+    await page.locator('#start-session').click();
+    await expect(page.locator('#study-progress')).toContainText('of 10');
+  });
+
   test('creates cards that survive a reload (IndexedDB persistence)', async ({ page }) => {
     await page.goto('/');
     await addCard(page, 'el perro', 'the dog');
