@@ -11,6 +11,7 @@ import {
   deleteCard,
   emptyTally,
   sortCardsByWord,
+  SESSION_LIMIT,
   COMMON_POS,
 } from './deck.js';
 import { RATING_LABELS, projectInterval } from './scheduler.js';
@@ -145,10 +146,16 @@ function refreshStudyIdle() {
     (c) => !c.archived && c.stats.dueAtSession <= deck.meta.sessionCounter + 1
   ).length;
   const total = deck.cards.filter((c) => !c.archived).length;
-  $('due-summary').textContent =
-    total === 0
-      ? 'No cards yet — add some in the Editor.'
-      : `${dueCount} card${dueCount === 1 ? '' : 's'} ready next session (${total} active).`;
+  const thisSession = Math.min(dueCount, SESSION_LIMIT);
+  let summary;
+  if (total === 0) {
+    summary = 'No cards yet — add some in the Editor.';
+  } else if (dueCount > SESSION_LIMIT) {
+    summary = `${thisSession} cards this session (${dueCount} due, capped at ${SESSION_LIMIT}; ${total} active).`;
+  } else {
+    summary = `${dueCount} card${dueCount === 1 ? '' : 's'} ready next session (${total} active).`;
+  }
+  $('due-summary').textContent = summary;
   $('start-session').disabled = total === 0;
 }
 

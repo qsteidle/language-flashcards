@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { createDeck, createCard, startSession } from '../../src/deck.js';
+import { createDeck, createCard, startSession, SESSION_LIMIT } from '../../src/deck.js';
 import { dueCards, isDue } from '../../src/scheduler.js';
 
 function cardWith(props) {
@@ -27,6 +27,17 @@ describe('due-queue filter', () => {
   it('archived cards are never due regardless of counter', () => {
     const c = cardWith({ card: { archived: true }, stats: { dueAtSession: 0 } });
     expect(isDue(c, 999)).toBe(false);
+  });
+
+  it('caps the session queue at SESSION_LIMIT cards', () => {
+    const deck = createDeck();
+    for (let i = 0; i < SESSION_LIMIT + 5; i++) {
+      deck.cards.push(createCard({ word: `w${i}`, definition: `d${i}` }, deck.meta.sessionCounter));
+    }
+    const queue = startSession(deck, () => 0);
+    expect(queue).toHaveLength(SESSION_LIMIT);
+    // All queued ids are unique and belong to the deck.
+    expect(new Set(queue).size).toBe(SESSION_LIMIT);
   });
 
   it('startSession bumps the counter and returns due ids', () => {

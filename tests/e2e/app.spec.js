@@ -80,6 +80,22 @@ test.describe('Repasito app', () => {
     await expect(page.locator('#card-list')).toContainText('Zona de strike');
   });
 
+  test('a session is capped at 20 cards even with a larger deck', async ({ page }) => {
+    page.on('dialog', (d) => d.accept());
+    await page.goto('/');
+    await waitReady(page);
+
+    // Load the 49-card example deck.
+    await page.locator('#utilities-btn').click();
+    await page.locator('#load-default-btn').click();
+    await expect(page.locator('#toast')).toContainText(/Deck now has 49 cards/);
+
+    await page.getByRole('button', { name: 'Study', exact: true }).click();
+    await expect(page.locator('#due-summary')).toContainText(/capped at 20/);
+    await page.locator('#start-session').click();
+    await expect(page.locator('#study-progress')).toContainText('of 20');
+  });
+
   test('creates cards that survive a reload (IndexedDB persistence)', async ({ page }) => {
     await page.goto('/');
     await addCard(page, 'el perro', 'the dog');

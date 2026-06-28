@@ -5,6 +5,10 @@ import { newCardStats, review, dueCards, shuffle, RATINGS } from './scheduler.js
 
 export const SCHEMA_VERSION = 1;
 
+// Most cards a single study session will present. Extra due cards stay due and
+// come up in the next session.
+export const SESSION_LIMIT = 20;
+
 const COMMON_POS = Object.freeze([
   'noun',
   'verb',
@@ -91,10 +95,12 @@ export function sortCardsByWord(cards) {
  *
  * Note: it is the *session counter*, not wall-clock time, that makes cards due.
  */
-export function startSession(deck, rng = Math.random) {
+export function startSession(deck, rng = Math.random, limit = SESSION_LIMIT) {
   deck.meta.sessionCounter += 1;
   const due = dueCards(deck.cards, deck.meta.sessionCounter);
-  return shuffle(due, rng).map((c) => c.id);
+  return shuffle(due, rng)
+    .slice(0, limit)
+    .map((c) => c.id);
 }
 
 /**

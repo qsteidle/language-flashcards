@@ -4,13 +4,17 @@ All notable changes to this project are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
 ### Added
 
+- Study sessions are now capped at **20 cards**. Extra due cards stay due and
+  appear in the next session; the Study screen shows when the cap is in effect.
 - **Load example deck** button in Utilities: imports a bundled Spanish baseball
   vocabulary deck (`decks/default-deck.json`, 49 cards) using the current
   merge/replace choice. Precached by the service worker so it works offline.
-
-## [Unreleased]
+- After any import (file or example deck), the app jumps to the Editor so the
+  imported cards are immediately visible.
 
 ### Changed
 
