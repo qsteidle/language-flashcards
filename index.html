@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Fichas — Spanish Flashcards</title>
+    <meta
+      name="description"
+      content="Offline Spanish flashcards with session-based spaced repetition."
+    />
+    <meta name="theme-color" content="#1f2933" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f7f5f0" media="(prefers-color-scheme: light)" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" href="icons/icon-192.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Fichas" />
+    <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="app-header">
+      <h1 class="app-title">Fichas</h1>
+      <nav class="modes" aria-label="Modes">
+        <button type="button" class="mode-btn is-active" data-view="study" aria-current="page">
+          Study
+        </button>
+        <button type="button" class="mode-btn" data-view="editor">Editor</button>
+        <button type="button" class="mode-btn" data-view="backup">Backup</button>
+      </nav>
+    </header>
+
+    <div id="install-hint" class="install-hint" hidden>
+      <p>
+        For your deck to stick around, tap <strong>Share</strong> →
+        <strong>Add to Home Screen</strong>, then open Fichas from the icon.
+      </p>
+      <button type="button" id="install-dismiss" class="link-btn">Got it</button>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+    <main id="main" class="main">
+      <!-- ============================ STUDY ============================ -->
+      <section id="view-study" class="view" aria-label="Study">
+        <div id="study-idle" class="study-idle">
+          <p id="due-summary" class="due-summary"></p>
+          <button type="button" id="start-session" class="primary-btn">Start session</button>
+        </div>
+
+        <div id="study-active" class="study-active" hidden>
+          <p id="study-progress" class="study-progress" aria-live="polite"></p>
+
+          <div id="card" class="card">
+            <div class="card-front">
+              <span class="card-pos" id="card-front-pos"></span>
+              <span class="word" id="card-word"></span>
+              <span class="flip-hint">Tap to reveal</span>
+            </div>
+            <div class="card-back" id="card-back" hidden>
+              <p class="definition" id="card-definition"></p>
+              <p class="pos" id="card-pos"></p>
+              <p class="example" id="card-example"></p>
+              <div class="related" id="card-synonyms"></div>
+              <div class="related" id="card-seealso"></div>
+              <img class="card-image" id="card-image" alt="" hidden />
+              <div class="card-audio" id="card-audio" hidden>
+                <button type="button" id="card-audio-play" class="secondary-btn">
+                  ▶ Play audio
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <button type="button" id="flip-btn" class="primary-btn">Show answer</button>
+
+          <div
+            id="rating-buttons"
+            class="rating-buttons"
+            hidden
+            role="group"
+            aria-label="Rate your recall"
+          >
+            <button type="button" class="rating-btn rating-0" data-rating="0">
+              <span class="rating-label">No</span><span class="rating-proj" data-proj></span>
+            </button>
+            <button type="button" class="rating-btn rating-1" data-rating="1">
+              <span class="rating-label">Hard</span><span class="rating-proj" data-proj></span>
+            </button>
+            <button type="button" class="rating-btn rating-2" data-rating="2">
+              <span class="rating-label">Medium</span><span class="rating-proj" data-proj></span>
+            </button>
+            <button type="button" class="rating-btn rating-3" data-rating="3">
+              <span class="rating-label">Easy</span><span class="rating-proj" data-proj></span>
+            </button>
+          </div>
+        </div>
+
+        <div id="study-summary" class="study-summary" hidden>
+          <h2>Session complete</h2>
+          <ul id="summary-tally" class="summary-tally"></ul>
+          <p id="export-reminder" class="export-reminder" hidden></p>
+          <button type="button" id="summary-done" class="primary-btn">Done</button>
+        </div>
+      </section>
+
+      <!-- ============================ EDITOR ============================ -->
+      <section id="view-editor" class="view" aria-label="Editor" hidden>
+        <div class="editor-form" id="editor-form">
+          <h2 id="editor-heading">New card</h2>
+
+          <label for="f-word">Spanish term</label>
+          <input id="f-word" type="text" autocomplete="off" placeholder="el perro" />
+
+          <label for="f-definition">Definition</label>
+          <input id="f-definition" type="text" autocomplete="off" placeholder="the dog" />
+
+          <label for="f-pos">Part of speech</label>
+          <select id="f-pos"></select>
+
+          <label for="f-example">Example sentence</label>
+          <textarea id="f-example" rows="2" placeholder="El perro corre en el parque."></textarea>
+
+          <label for="f-synonym-input">Synonyms</label>
+          <div class="chip-row">
+            <input
+              id="f-synonym-input"
+              type="text"
+              autocomplete="off"
+              placeholder="add a synonym"
+            />
+            <button type="button" id="f-synonym-add" class="secondary-btn">Add</button>
+          </div>
+          <ul id="f-synonyms" class="chips" aria-label="Synonyms"></ul>
+
+          <label for="f-seealso-input">See also</label>
+          <div class="chip-row">
+            <input
+              id="f-seealso-input"
+              type="text"
+              autocomplete="off"
+              placeholder="add a related term"
+            />
+            <button type="button" id="f-seealso-add" class="secondary-btn">Add</button>
+          </div>
+          <ul id="f-seealso" class="chips" aria-label="See also"></ul>
+
+          <label for="f-image">Image (optional)</label>
+          <input id="f-image" type="file" accept="image/*" />
+          <div id="f-image-preview-wrap" hidden>
+            <img id="f-image-preview" alt="Selected card image preview" class="image-preview" />
+            <button type="button" id="f-image-remove" class="link-btn">Remove image</button>
+          </div>
+
+          <p class="field-label">Audio (optional)</p>
+          <div class="audio-controls">
+            <button type="button" id="f-audio-record" class="secondary-btn">● Record</button>
+            <button type="button" id="f-audio-stop" class="secondary-btn" hidden>■ Stop</button>
+            <button type="button" id="f-audio-play" class="secondary-btn" hidden>▶ Play</button>
+            <button type="button" id="f-audio-remove" class="link-btn" hidden>Remove audio</button>
+            <span id="f-audio-status" class="audio-status"></span>
+          </div>
+
+          <div class="editor-actions">
+            <button type="button" id="f-save" class="primary-btn">Save card</button>
+            <button type="button" id="f-cancel" class="secondary-btn" hidden>Cancel</button>
+          </div>
+        </div>
+
+        <div class="card-browser">
+          <h2>Cards</h2>
+          <label for="search" class="visually-hidden">Search cards</label>
+          <input id="search" type="search" placeholder="Search cards…" autocomplete="off" />
+          <div class="filter-row" role="group" aria-label="Filter">
+            <button type="button" class="filter-btn is-active" data-filter="active">Active</button>
+            <button type="button" class="filter-btn" data-filter="archived">Archived</button>
+            <button type="button" class="filter-btn" data-filter="all">All</button>
+          </div>
+          <ul id="card-list" class="card-list"></ul>
+          <p id="card-list-empty" class="empty-state" hidden>No cards yet. Add one above.</p>
+        </div>
+      </section>
+
+      <!-- ============================ BACKUP ============================ -->
+      <section id="view-backup" class="view" aria-label="Backup" hidden>
+        <h2>Backup &amp; restore</h2>
+        <p class="backup-note">
+          Your deck lives only on this device. The JSON export is your real backup — do it often.
+        </p>
+
+        <button type="button" id="export-btn" class="primary-btn">Export deck (.json)</button>
+        <p id="last-export" class="last-export"></p>
+
+        <hr />
+
+        <h3>Import</h3>
+        <label for="import-file">Choose a backup file</label>
+        <input id="import-file" type="file" accept="application/json,.json" />
+        <fieldset class="import-mode">
+          <legend>On import</legend>
+          <label
+            ><input type="radio" name="import-mode" value="merge" checked /> Merge into current
+            deck</label
+          >
+          <label
+            ><input type="radio" name="import-mode" value="replace" /> Replace current deck</label
+          >
+        </fieldset>
+        <button type="button" id="import-btn" class="secondary-btn" disabled>Import</button>
+
+        <hr />
+
+        <h3>Storage</h3>
+        <p id="storage-readout" class="storage-readout">Calculating…</p>
+        <p id="persist-status" class="persist-status"></p>
+        <button type="button" id="persist-btn" class="secondary-btn">
+          Request persistent storage
+        </button>
+      </section>
+    </main>
+
+    <script type="module" src="src/app.js"></script>
+  </body>
+</html>

@@ -22,3 +22,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   (incl. lossless media), session-not-days, due-queue filter, localStorage guard.
 - README documenting the model, quick start, iPhone install, backup, scheduling
   rules, tests, and platform limitations.
+- App shell (`index.html`) and styling (`styles.css`): three modes (Study /
+  Editor / Backup), light + dark themes, reduced-motion aware, large tap
+  targets, a cool→warm rating-button color ramp, and a skip link.
+- Study mode (`src/app.js`): start session, flip card, four 0–3 rating buttons
+  with honest projected next-intervals, progress indicator, and an end-of-session
+  summary with export reminder.
+- Editor mode: create/edit/archive/unarchive/delete cards; synonym and see-also
+  chips; optional image upload with preview; searchable, filterable card browser.
+- Audio capture (`src/audio.js`): MIME-feature-detected `MediaRecorder` (never
+  hardcodes WebM), record/stop/play, re-record replaces the old blob, mic tracks
+  stopped on end.
+- Backup mode: export deck (media inlined) to a JSON download, import with
+  merge/replace, storage-usage readout, and persistent-storage request.
+- PWA: `manifest.json`, generated PNG + SVG icons (`scripts/make-icons.js`),
+  `service-worker.js` precaching the app shell for offline, and an iOS
+  add-to-home-screen hint.

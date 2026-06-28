@@ -13,6 +13,7 @@ const DEFAULTS = Object.freeze({
   stripAudioOnAutoArchive: null, // null = not yet asked; true/false once chosen
   showProjectedIntervals: true,
   lastExportAt: null, // ISO string of last export, for the "export reminder"
+  installHintDismissed: false,
 });
 
 function hasStorage() {

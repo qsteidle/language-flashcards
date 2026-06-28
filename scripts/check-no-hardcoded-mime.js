@@ -2,7 +2,7 @@
 // preference array in src/audio.js. Fail if 'audio/webm' or 'audio/mp4'
 // string literals appear anywhere else.
 import { readdir, readFile } from 'node:fs/promises';
-import { join, extname } from 'node:path';
+import { join, extname, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
@@ -27,7 +27,7 @@ async function walk(dir, acc = []) {
 const files = [...(await walk(join(ROOT, 'src'))), join(ROOT, 'index.html')];
 const violations = [];
 for (const file of files) {
-  const rel = file.slice(ROOT.length + 1).replace(/\\/g, '/');
+  const rel = relative(ROOT, file).replace(/\\/g, '/');
   if (rel === ALLOWED_FILE) continue;
   const text = await readFile(file, 'utf8').catch(() => '');
   text.split('\n').forEach((line, i) => {
