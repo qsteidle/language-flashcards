@@ -618,8 +618,11 @@ function selectedImportMode() {
 async function applyImport(obj, mode) {
   const { deck: newDeck, imported } = await importJSON(obj, { mode });
   deck = newDeck;
-  toast(`Imported. Deck now has ${imported} card${imported === 1 ? '' : 's'}.`);
-  refreshBackup();
+  // Jump to the Editor so the imported cards are immediately visible — the
+  // Utilities screen never lists cards, which can make a successful import look
+  // like nothing happened.
+  switchView('editor');
+  toast(`Imported. Deck now has ${imported} card${imported === 1 ? '' : 's'}.`, 4000);
 }
 
 async function doImport() {
@@ -814,12 +817,26 @@ function wireEvents() {
 }
 
 async function registerServiceWorker() {
-  if ('serviceWorker' in navigator) {
-    try {
-      await navigator.serviceWorker.register('service-worker.js');
-    } catch {
-      /* offline support is best-effort */
-    }
+  if (!('serviceWorker' in navigator)) return;
+
+  // If a service worker already controls this page, a controllerchange means a
+  // newer worker has taken over — reload once so fresh code/assets apply
+  // automatically (prevents stale app.js from masking updates). We only attach
+  // this when there's an existing controller, so first-ever visits don't reload.
+  if (navigator.serviceWorker.controller) {
+    let reloaded = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (reloaded) return;
+      reloaded = true;
+      window.location.reload();
+    });
+  }
+
+  try {
+    const reg = await navigator.serviceWorker.register('service-worker.js');
+    reg.update(); // check for a newer worker on every load
+  } catch {
+    /* offline support is best-effort */
   }
 }
 

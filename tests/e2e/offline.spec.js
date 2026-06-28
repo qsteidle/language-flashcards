@@ -20,7 +20,7 @@ test.describe('PWA offline', () => {
     await context.setOffline(true);
 
     const cacheState = await page.evaluate(async () => {
-      const cache = await caches.open('repasito-shell-v1');
+      const cache = await caches.open('repasito-shell-v2');
       const needed = [
         'index.html',
         'styles.css',

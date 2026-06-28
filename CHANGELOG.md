@@ -34,6 +34,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Service worker now auto-applies updates: it checks for a newer worker on each
+  load and reloads once when one takes control, so a stale cached `app.js` can no
+  longer mask new features (e.g. a button whose handler lives in newer JS). Cache
+  bumped to `repasito-shell-v2`.
 - Service worker is now **network-first**: it always serves fresh code when
   online and only falls back to the cache offline. Previously it was cache-first,
   so after the first visit it kept serving stale `app.js`/`styles.css` and masked
