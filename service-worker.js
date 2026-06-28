@@ -2,7 +2,7 @@
 // network disabled after the first visit. User data is never cached here — it
 // lives in IndexedDB.
 
-const CACHE = 'fichas-shell-v2';
+const CACHE = 'repasito-shell-v1';
 
 const SHELL = [
   './',

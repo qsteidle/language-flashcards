@@ -15,7 +15,7 @@ async function addCard(page, word, definition) {
   await expect(page.locator('#card-list')).toContainText(word);
 }
 
-test.describe('Fichas app', () => {
+test.describe('Repasito app', () => {
   test('each mode is a distinct view with no overlap', async ({ page }) => {
     await page.goto('/');
     await waitReady(page);

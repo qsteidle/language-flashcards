@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Fichas">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Repasito">
   <rect width="512" height="512" fill="#2f6f8f" />
   <rect x="92" y="92" width="328" height="328" rx="28" fill="#f7f5f0" />
   <rect x="92" y="92" width="328" height="82" rx="28" fill="#b06b3a" />
   <rect x="92" y="146" width="328" height="28" fill="#b06b3a" />
   <text x="256" y="320" font-family="system-ui, sans-serif" font-size="170" font-weight="700"
-        text-anchor="middle" fill="#1f2933">F</text>
+        text-anchor="middle" fill="#1f2933">R</text>
 </svg>

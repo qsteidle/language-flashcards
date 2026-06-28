@@ -1,6 +1,6 @@
 {
-  "name": "Fichas — Spanish Flashcards",
-  "short_name": "Fichas",
+  "name": "Repasito — Spanish Flashcards",
+  "short_name": "Repasito",
   "description": "Offline Spanish flashcards with session-based spaced repetition.",
   "start_url": "./index.html",
   "scope": "./",

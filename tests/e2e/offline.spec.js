@@ -20,7 +20,7 @@ test.describe('PWA offline', () => {
     await context.setOffline(true);
 
     const cacheState = await page.evaluate(async () => {
-      const cache = await caches.open('fichas-shell-v2');
+      const cache = await caches.open('repasito-shell-v1');
       const needed = [
         'index.html',
         'styles.css',
@@ -35,7 +35,7 @@ test.describe('PWA offline', () => {
       }
       const shellRes = await cache.match('index.html');
       const shellText = shellRes ? await shellRes.text() : '';
-      return { present, shellHasTitle: shellText.includes('Fichas') };
+      return { present, shellHasTitle: shellText.includes('Repasito') };
     });
 
     await context.setOffline(false);

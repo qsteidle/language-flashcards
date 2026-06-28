@@ -595,7 +595,7 @@ async function doExport() {
     const a = document.createElement('a');
     const stamp = new Date().toISOString().slice(0, 10);
     a.href = url;
-    a.download = `fichas-backup-${stamp}.json`;
+    a.download = `repasito-backup-${stamp}.json`;
     document.body.appendChild(a);
     a.click();
     a.remove();

@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Renamed the app from **Fichas** to **Repasito** (title, manifest, home-screen
+  name, icon, and export filename `repasito-backup-*.json`). Service-worker cache
+  renamed to `repasito-shell-v1`.
 - The Backup tab is now **Utilities**, opened from a settings gear button in the
   top-right of the header instead of occupying a tab slot. Study and Editor are
   now two large, thumb-friendly buttons on the mode row.
