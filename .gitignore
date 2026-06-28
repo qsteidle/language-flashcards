@@ -9,3 +9,6 @@ coverage/
 *.deck.json
 my-deck*.json
 !fixtures/*.json
+
+# loose working deck file (canonical copy lives in decks/)
+repasa-beisbol-deck.json

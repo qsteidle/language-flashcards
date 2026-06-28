@@ -66,6 +66,20 @@ test.describe('Repasito app', () => {
     await expect(page.locator('#card-note')).toContainText('accent distinguishes');
   });
 
+  test('loads the bundled example deck from Utilities', async ({ page }) => {
+    page.on('dialog', (d) => d.accept()); // accept the confirm prompt
+    await page.goto('/');
+    await waitReady(page);
+
+    await page.locator('#utilities-btn').click();
+    await page.locator('#load-default-btn').click();
+    await expect(page.locator('#toast')).toContainText(/Deck now has 49 cards/);
+
+    await page.getByRole('button', { name: 'Editor', exact: true }).click();
+    await expect(page.locator('#card-list')).toContainText('Bateador');
+    await expect(page.locator('#card-list')).toContainText('Zona de strike');
+  });
+
   test('creates cards that survive a reload (IndexedDB persistence)', async ({ page }) => {
     await page.goto('/');
     await addCard(page, 'el perro', 'the dog');

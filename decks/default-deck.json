@@ -1,0 +1,990 @@
+{
+  "schemaVersion": 1,
+  "meta": {
+    "sessionCounter": 0,
+    "createdAt": "2026-06-28T20:32:34.474956+00:00",
+    "lastExportedAt": null
+  },
+  "cards": [
+    {
+      "id": "1f10e043-7a16-432a-96e1-ccb09b1650c6",
+      "word": "Situación de juego",
+      "definition": "game situation",
+      "pos": "noun phrase",
+      "example": "El entrenador analiza la situación de juego.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "f7acb154-abaf-4b78-afc5-d84eb5fa3f90",
+      "word": "Conteo",
+      "definition": "count (balls and strikes)",
+      "pos": "noun",
+      "example": "El conteo está en dos bolas y un strike.",
+      "synonyms": [],
+      "seeAlso": ["Zona de strike"],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "06fb4dfe-abdf-466c-8121-aa14c739bff5",
+      "word": "Strike al primer lanzamiento",
+      "definition": "first-pitch strike",
+      "pos": "noun phrase",
+      "example": "El lanzador busca un strike al primer lanzamiento.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "ffe642d4-155b-420f-b7b9-53e8a5fc883e",
+      "word": "Turno de calidad",
+      "definition": "quality at-bat",
+      "pos": "noun phrase",
+      "example": "Tuvo un turno de calidad aunque no conectó.",
+      "synonyms": [],
+      "seeAlso": ["Turno"],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "5ef64116-f924-40aa-ab76-0a9cda7a23b4",
+      "word": "Enfoque",
+      "definition": "approach",
+      "pos": "noun",
+      "example": "Su enfoque en el plato es muy bueno.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "9489f092-7038-44f9-9537-05140ce523ee",
+      "word": "Plan",
+      "definition": "plan",
+      "pos": "noun",
+      "example": "El bateador tiene un plan claro.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "0c4b7ea8-b3c1-4b04-a88f-60826188f973",
+      "word": "Ajuste",
+      "definition": "adjustment",
+      "pos": "noun",
+      "example": "Hizo un ajuste en su swing.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "08b5267f-98d5-4681-9883-7b786dd30892",
+      "word": "Conciencia",
+      "definition": "awareness",
+      "pos": "noun",
+      "example": "Tiene conciencia de la zona de strike.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "c79d1ad2-7338-4ed8-a245-feb69001ecc1",
+      "word": "Consistencia",
+      "definition": "consistency",
+      "pos": "noun",
+      "example": "La consistencia es clave para batear bien.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "f9cb745d-560c-481b-a1ec-e14dd14888c6",
+      "word": "Preparación",
+      "definition": "preparation",
+      "pos": "noun",
+      "example": "La preparación antes del juego es importante.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "dc8746e5-15c5-46c3-a107-50c8e9e9e1d9",
+      "word": "Árbitro",
+      "definition": "umpire",
+      "pos": "noun",
+      "example": "El árbitro canta el strike.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "6980ae4c-0ecd-4b53-b4f5-285601f1d9e6",
+      "word": "Bate",
+      "definition": "bat",
+      "pos": "noun",
+      "example": "El bateador levanta el bate.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "14504fad-edda-4a0d-a591-a6c0a0283784",
+      "word": "Bateador designado",
+      "definition": "designated hitter",
+      "pos": "noun phrase",
+      "example": "El bateador designado no juega en el campo.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "7fbf9066-17c6-48c1-816e-a9fac501dc2e",
+      "word": "Carrera",
+      "definition": "run (a score)",
+      "pos": "noun",
+      "example": "El equipo anotó una carrera.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "a2222de5-1093-421f-8e0c-832275dd2cf4",
+      "word": "Casco",
+      "definition": "(batting) helmet",
+      "pos": "noun",
+      "example": "El bateador usa un casco.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "01ac4cea-efaa-4170-983a-be92f3730855",
+      "word": "Doble",
+      "definition": "double (two-base hit)",
+      "pos": "noun",
+      "example": "Conectó un doble a la izquierda.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "6a17bba3-46c2-4445-a0c4-a55094e898ae",
+      "word": "Equipo",
+      "definition": "team",
+      "pos": "noun",
+      "example": "Mi equipo gana el juego.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "f5fe4a16-bd12-44a1-89f3-31fe87a577d5",
+      "word": "Guante",
+      "definition": "glove",
+      "pos": "noun",
+      "example": "El jardinero usa un guante.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "dd4df0c1-33f5-4d70-b21d-effdff7de095",
+      "word": "Hombro",
+      "definition": "shoulder",
+      "pos": "noun",
+      "example": "Le duele el hombro al lanzar.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "b4c1e7c4-4998-4057-943b-6c752e301fbd",
+      "word": "Jardinero izquierdo",
+      "definition": "left fielder",
+      "pos": "noun phrase",
+      "example": "El jardinero izquierdo atrapa la pelota.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "896b2aea-7726-4c33-83a8-46f321cc085f",
+      "word": "Jardinero central",
+      "definition": "center fielder",
+      "pos": "noun phrase",
+      "example": "El jardinero central corre muy rápido.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "13c5465a-de43-442e-a6d8-81f9723f12c7",
+      "word": "Jardinero derecho",
+      "definition": "right fielder",
+      "pos": "noun phrase",
+      "example": "El jardinero derecho tiene un buen brazo.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "6e77d441-b3b7-445a-b570-142b45e5ad38",
+      "word": "Kilogramo",
+      "definition": "kilogram",
+      "pos": "noun",
+      "example": "El bate pesa casi un kilogramo.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "0188b227-f08c-47cb-a342-584d5eb392fc",
+      "word": "Lanzador",
+      "definition": "pitcher",
+      "pos": "noun",
+      "example": "El lanzador tira la pelota.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "6373e9d3-2a7e-4bcd-abc8-e31e0319fce3",
+      "word": "Mano",
+      "definition": "hand",
+      "pos": "noun",
+      "example": "Atrapa la pelota con la mano.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "49b2af58-c218-42b5-860b-5fbdb842df7b",
+      "word": "Novena",
+      "definition": "the team / lineup (lit. 'the nine')",
+      "pos": "noun",
+      "example": "La novena sale al campo.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "eb8e1ac0-eb66-44c3-8a1b-c35eb2cffe9e",
+      "word": "Niño",
+      "definition": "boy / child",
+      "pos": "noun",
+      "example": "El niño juega béisbol en el parque.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "656ea425-b1a3-412e-8f91-440009ce7418",
+      "word": "Ofensiva",
+      "definition": "offense",
+      "pos": "noun",
+      "example": "La ofensiva del equipo es fuerte.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "ff619bc5-1cd0-4449-bc2d-12c0bde439ce",
+      "word": "Primera base",
+      "definition": "first base",
+      "pos": "noun phrase",
+      "example": "El corredor llega a primera base.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "c0ecf81a-b670-4f88-8561-b72e671fb428",
+      "word": "Receptor",
+      "definition": "catcher",
+      "pos": "noun",
+      "example": "El receptor atrapa el lanzamiento.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "50e73cf7-3933-4dfd-a582-21b4995b978d",
+      "word": "Segunda base",
+      "definition": "second base",
+      "pos": "noun phrase",
+      "example": "Roba la segunda base.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "1a4752eb-d3fb-4cad-a7e8-e716c83e0203",
+      "word": "Tercera base",
+      "definition": "third base",
+      "pos": "noun phrase",
+      "example": "El corredor está en tercera base.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "f8e16746-1ab9-4701-ba27-c11a3a397347",
+      "word": "Uniforme",
+      "definition": "uniform",
+      "pos": "noun",
+      "example": "El jugador lleva su uniforme.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "8b2b1c51-0a7e-4196-a9bd-1cefb23baa0c",
+      "word": "Victoria",
+      "definition": "win / victory",
+      "pos": "noun",
+      "example": "El equipo celebra la victoria.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "b1f608d1-f054-441e-bd5a-b9c17fb5a36a",
+      "word": "Zona",
+      "definition": "zone",
+      "pos": "noun",
+      "example": "La pelota pasa por la zona.",
+      "synonyms": [],
+      "seeAlso": ["Zona de strike"],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "bb502377-0f8e-436d-963d-ab6ad55ab056",
+      "word": "Campocorto",
+      "definition": "shortstop",
+      "pos": "noun",
+      "example": "El campocorto atrapa la pelota.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "fdd0ce9b-6f2e-4d4d-ba34-7c31126cbe46",
+      "word": "Bateador",
+      "definition": "hitter; batter",
+      "pos": "noun",
+      "example": "El bateador espera el lanzamiento.",
+      "synonyms": [],
+      "seeAlso": ["Turno", "Swing"],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "b3534ec1-6c48-48b7-b7a0-4d0724ef659a",
+      "word": "Turno",
+      "definition": "at-bat",
+      "pos": "noun",
+      "example": "Es su turno al bate.",
+      "synonyms": [],
+      "seeAlso": ["Turno de calidad"],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "2b36ff3d-70d3-41e9-83ec-5d0578478926",
+      "word": "Swing",
+      "definition": "swing",
+      "pos": "noun",
+      "example": "Su swing es muy rápido.",
+      "synonyms": [],
+      "seeAlso": ["Trayectoria del swing", "Velocidad del bate", "Terminación del swing"],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "00f058b7-f370-42c7-88e6-c860aac18df5",
+      "word": "Trayectoria del swing",
+      "definition": "swing path",
+      "pos": "noun phrase",
+      "example": "La trayectoria del swing es plana.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "f714b693-26c8-47b8-9af0-862f9fc75858",
+      "word": "Velocidad del bate",
+      "definition": "bat speed",
+      "pos": "noun phrase",
+      "example": "Tiene muy buena velocidad del bate.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "395e763a-feb1-4529-866e-f12cbe8d5347",
+      "word": "Contacto sólido",
+      "definition": "barrel (solid contact)",
+      "pos": "noun phrase",
+      "example": "Hizo contacto sólido con la pelota.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "e4a11159-bed7-4e8b-8c99-99c665ba7ba1",
+      "word": "Carga",
+      "definition": "load",
+      "pos": "noun",
+      "example": "La carga es el primer paso del swing.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "e0b38dc6-81e7-4eaf-9ac4-e69ca36876db",
+      "word": "Tiempo",
+      "definition": "timing",
+      "pos": "noun",
+      "example": "El tiempo es importante para batear.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "ef42aca7-0dc9-4a13-ab14-fad454d51bb9",
+      "word": "Balance",
+      "definition": "balance",
+      "pos": "noun",
+      "example": "Mantiene el balance al batear.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "44418484-9832-42ae-ae03-86c0806e6fd0",
+      "word": "Disciplina en el plato",
+      "definition": "plate discipline",
+      "pos": "noun phrase",
+      "example": "Su disciplina en el plato es excelente.",
+      "synonyms": [],
+      "seeAlso": ["Zona de strike"],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "bae40d4b-35b2-45c7-aa7d-6c2aed9d7291",
+      "word": "Zona de strike",
+      "definition": "strike zone",
+      "pos": "noun phrase",
+      "example": "La pelota entró en la zona de strike.",
+      "synonyms": [],
+      "seeAlso": ["Zona", "Conciencia"],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "d5c27adf-b9be-4308-a242-dfc941dc7142",
+      "word": "Punto de contacto",
+      "definition": "contact point",
+      "pos": "noun phrase",
+      "example": "El punto de contacto está enfrente del plato.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    },
+    {
+      "id": "f3890e94-204c-4791-8496-071f416a978f",
+      "word": "Terminación del swing",
+      "definition": "follow-through",
+      "pos": "noun phrase",
+      "example": "Su terminación del swing es completa.",
+      "synonyms": [],
+      "seeAlso": [],
+      "imageId": null,
+      "audioId": null,
+      "archived": false,
+      "stats": {
+        "interval": 1,
+        "ease": 2.5,
+        "reps": 0,
+        "dueAtSession": 1,
+        "lastRating": null,
+        "reviewCount": 0
+      }
+    }
+  ]
+}

@@ -611,22 +611,47 @@ async function doExport() {
   }
 }
 
+function selectedImportMode() {
+  return document.querySelector('input[name="import-mode"]:checked').value;
+}
+
+async function applyImport(obj, mode) {
+  const { deck: newDeck, imported } = await importJSON(obj, { mode });
+  deck = newDeck;
+  toast(`Imported. Deck now has ${imported} card${imported === 1 ? '' : 's'}.`);
+  refreshBackup();
+}
+
 async function doImport() {
   const file = $('import-file').files[0];
   if (!file) return;
-  const mode = document.querySelector('input[name="import-mode"]:checked').value;
+  const mode = selectedImportMode();
   if (mode === 'replace' && !confirm('Replace your entire current deck with this file?')) return;
   try {
     const text = await file.text();
     const obj = JSON.parse(text);
-    const { deck: newDeck, imported } = await importJSON(obj, { mode });
-    deck = newDeck;
+    await applyImport(obj, mode);
     $('import-file').value = '';
     $('import-btn').disabled = true;
-    toast(`Imported. Deck now has ${imported} card${imported === 1 ? '' : 's'}.`);
-    refreshBackup();
   } catch (err) {
     toast('Import failed: ' + (err.message || err), 5000);
+  }
+}
+
+async function loadDefaultDeck() {
+  const mode = selectedImportMode();
+  const msg =
+    mode === 'replace'
+      ? 'Replace your entire current deck with the example deck?'
+      : 'Add the example deck (béisbol) to your current deck?';
+  if (!confirm(msg)) return;
+  try {
+    const res = await fetch('decks/default-deck.json');
+    if (!res.ok) throw new Error(`could not load example deck (${res.status})`);
+    const obj = await res.json();
+    await applyImport(obj, mode);
+  } catch (err) {
+    toast('Could not load the example deck: ' + (err.message || err), 5000);
   }
 }
 
@@ -774,6 +799,7 @@ function wireEvents() {
     $('import-btn').disabled = !$('import-file').files[0];
   });
   $('import-btn').addEventListener('click', doImport);
+  $('load-default-btn').addEventListener('click', loadDefaultDeck);
   $('persist-btn').addEventListener('click', async () => {
     const granted = await requestPersist();
     toast(granted ? 'Persistent storage granted.' : 'Persistent storage was not granted.');

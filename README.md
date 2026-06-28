@@ -16,8 +16,9 @@ when you study, not when the clock ticks.
   scheduler decides when the card returns.
 - **Editor** — create, edit, browse, archive, and delete cards. Attach an optional
   image and an optional voice recording per card.
-- **Backup** — export the whole deck (with media inlined) to a JSON file, and
-  import it back.
+- **Utilities** (gear button, top-right) — export the whole deck (with media
+  inlined) to a JSON file, import it back, **load a bundled example deck**
+  (Spanish baseball vocabulary), toggle study options, and see storage usage.
 
 ## Quick start (local)
 
@@ -163,6 +164,7 @@ src/serialize.js      base64 <-> Blob (export only)
 src/prefs.js          the ONLY localStorage chokepoint
 src/audio.js          MIME-detecting recorder + playback
 src/app.js            UI controller wiring it all together
+decks/default-deck.json  bundled example deck (Spanish baseball vocabulary)
 manifest.json         PWA manifest
 service-worker.js     app-shell cache for offline
 icons/                PWA icons
