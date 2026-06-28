@@ -120,7 +120,7 @@ async function playBlob(blob, urlSlot) {
 // ---------------------------------------------------------------- view switch
 
 function switchView(view) {
-  for (const btn of document.querySelectorAll('.mode-btn')) {
+  for (const btn of document.querySelectorAll('[data-view]')) {
     const active = btn.dataset.view === view;
     btn.classList.toggle('is-active', active);
     if (active) btn.setAttribute('aria-current', 'page');
@@ -128,11 +128,11 @@ function switchView(view) {
   }
   $('view-study').hidden = view !== 'study';
   $('view-editor').hidden = view !== 'editor';
-  $('view-backup').hidden = view !== 'backup';
+  $('view-utilities').hidden = view !== 'utilities';
 
   if (view === 'study') refreshStudyIdle();
   if (view === 'editor') renderCardList();
-  if (view === 'backup') refreshBackup();
+  if (view === 'utilities') refreshBackup();
 }
 
 // ---------------------------------------------------------------- study mode
@@ -646,7 +646,7 @@ function maybeShowInstallHint() {
 // ---------------------------------------------------------------- wiring
 
 function wireEvents() {
-  for (const btn of document.querySelectorAll('.mode-btn')) {
+  for (const btn of document.querySelectorAll('[data-view]')) {
     btn.addEventListener('click', () => switchView(btn.dataset.view));
   }
 

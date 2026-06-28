@@ -20,9 +20,9 @@ test.describe('accessibility (axe-core)', () => {
     expect(violations, JSON.stringify(violations, null, 2)).toEqual([]);
   });
 
-  test('backup screen has no critical/serious violations', async ({ page }) => {
+  test('utilities screen has no critical/serious violations', async ({ page }) => {
     await page.goto('/');
-    await page.getByRole('button', { name: 'Backup', exact: true }).click();
+    await page.locator('#utilities-btn').click();
     const violations = await criticalViolations(page);
     expect(violations, JSON.stringify(violations, null, 2)).toEqual([]);
   });

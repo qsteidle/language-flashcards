@@ -23,17 +23,17 @@ test.describe('Fichas app', () => {
     // Study active, others hidden.
     await expect(page.locator('#view-study')).toBeVisible();
     await expect(page.locator('#view-editor')).toBeHidden();
-    await expect(page.locator('#view-backup')).toBeHidden();
+    await expect(page.locator('#view-utilities')).toBeHidden();
 
     await page.getByRole('button', { name: 'Editor', exact: true }).click();
     await expect(page.locator('#view-study')).toBeHidden();
     await expect(page.locator('#view-editor')).toBeVisible();
-    await expect(page.locator('#view-backup')).toBeHidden();
+    await expect(page.locator('#view-utilities')).toBeHidden();
 
-    await page.getByRole('button', { name: 'Backup', exact: true }).click();
+    await page.locator('#utilities-btn').click();
     await expect(page.locator('#view-study')).toBeHidden();
     await expect(page.locator('#view-editor')).toBeHidden();
-    await expect(page.locator('#view-backup')).toBeVisible();
+    await expect(page.locator('#view-utilities')).toBeVisible();
   });
 
   test('card list is alphabetized ignoring leading articles', async ({ page }) => {
@@ -58,7 +58,7 @@ test.describe('Fichas app', () => {
     await expect(page.locator('#card-list')).toContainText('aún');
 
     // Turn off reverse so the front is the Spanish word and the note shows on flip.
-    await page.getByRole('button', { name: 'Backup', exact: true }).click();
+    await page.locator('#utilities-btn').click();
     await page.locator('#opt-reverse').uncheck();
     await page.getByRole('button', { name: 'Study', exact: true }).click();
     await page.locator('#start-session').click();
@@ -118,7 +118,7 @@ test.describe('Fichas app', () => {
 
     await expect(page.locator('#toast')).toContainText(/storage is full/i);
     // The app is still alive and responsive.
-    await expect(page.locator('.mode-btn[data-view="backup"]')).toBeVisible();
+    await expect(page.locator('#utilities-btn')).toBeVisible();
   });
 
   test('audio recorder selects a supported MIME type by preference, never hardcodes WebM', async ({
@@ -157,7 +157,7 @@ test.describe('Fichas app', () => {
     await addCard(page, 'gracias', 'thank you');
 
     // Disable reverse so the front is deterministically the Spanish term.
-    await page.getByRole('button', { name: 'Backup', exact: true }).click();
+    await page.locator('#utilities-btn').click();
     await page.locator('#opt-reverse').uncheck();
     await page.getByRole('button', { name: 'Study', exact: true }).click();
     await page.locator('#start-session').click();

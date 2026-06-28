@@ -22,13 +22,28 @@
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="app-header">
-      <h1 class="app-title">Fichas</h1>
+      <div class="header-top">
+        <h1 class="app-title">Fichas</h1>
+        <button
+          type="button"
+          class="gear-btn"
+          data-view="utilities"
+          id="utilities-btn"
+          aria-label="Utilities and settings"
+        >
+          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+            <path
+              fill="currentColor"
+              d="M19.14 12.94c.04-.31.06-.62.06-.94 0-.32-.02-.63-.06-.94l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.61-.22l-2.39.96a7.03 7.03 0 0 0-1.62-.94l-.36-2.54a.5.5 0 0 0-.5-.42h-3.84a.5.5 0 0 0-.5.42l-.36 2.54c-.59.24-1.13.56-1.62.94l-2.39-.96a.5.5 0 0 0-.61.22L2.74 8.84a.5.5 0 0 0 .12.64l2.03 1.58c-.04.31-.06.62-.06.94 0 .32.02.63.06.94l-2.03 1.58a.5.5 0 0 0-.12.64l1.92 3.32c.14.24.42.34.61.22l2.39-.96c.49.38 1.03.7 1.62.94l.36 2.54c.05.24.25.42.5.42h3.84c.25 0 .45-.18.5-.42l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.19.07.47-.02.61-.22l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.58zM12 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z"
+            />
+          </svg>
+        </button>
+      </div>
       <nav class="modes" aria-label="Modes">
         <button type="button" class="mode-btn is-active" data-view="study" aria-current="page">
           Study
         </button>
         <button type="button" class="mode-btn" data-view="editor">Editor</button>
-        <button type="button" class="mode-btn" data-view="backup">Backup</button>
       </nav>
     </header>
 
@@ -188,8 +203,8 @@
         </div>
       </section>
 
-      <!-- ============================ BACKUP ============================ -->
-      <section id="view-backup" class="view" aria-label="Backup" hidden>
+      <!-- ============================ UTILITIES ============================ -->
+      <section id="view-utilities" class="view" aria-label="Utilities" hidden>
         <h2>Study options</h2>
         <label class="toggle-row">
           <input type="checkbox" id="opt-reverse" />

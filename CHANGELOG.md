@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- The Backup tab is now **Utilities**, opened from a settings gear button in the
+  top-right of the header instead of occupying a tab slot. Study and Editor are
+  now two large, thumb-friendly buttons on the mode row.
+
 ### Added
 
 - Optional **Note** field per card (editor textarea, shown on the card back,

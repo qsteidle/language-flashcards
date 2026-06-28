@@ -114,26 +114,53 @@ body {
   z-index: 5;
 }
 
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
 .app-title {
-  margin: 0 0 0.5rem;
+  margin: 0;
   font-size: 1.25rem;
   letter-spacing: 0.02em;
 }
 
+.gear-btn {
+  width: var(--tap);
+  height: var(--tap);
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  border-radius: 50%;
+  cursor: pointer;
+}
+.gear-btn.is-active {
+  background: var(--accent);
+  color: var(--accent-text);
+  border-color: var(--accent);
+}
+
 .modes {
   display: flex;
-  gap: 0.4rem;
+  gap: 0.5rem;
 }
 
 .mode-btn {
   flex: 1;
-  min-height: var(--tap);
+  min-height: 3.5rem;
   border: 1px solid var(--border);
   background: var(--surface-2);
   color: var(--text);
   border-radius: var(--radius);
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.15rem;
+  font-weight: 700;
   cursor: pointer;
 }
 .mode-btn.is-active {
