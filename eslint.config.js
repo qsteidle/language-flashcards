@@ -25,6 +25,7 @@ export default [
         matchMedia: 'readonly',
         crypto: 'readonly',
         fetch: 'readonly',
+        Response: 'readonly',
         caches: 'readonly',
         atob: 'readonly',
         btoa: 'readonly',

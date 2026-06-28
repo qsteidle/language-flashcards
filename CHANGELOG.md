@@ -19,6 +19,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Service worker is now **network-first**: it always serves fresh code when
+  online and only falls back to the cache offline. Previously it was cache-first,
+  so after the first visit it kept serving stale `app.js`/`styles.css` and masked
+  updates. Cache bumped to `fichas-shell-v2`.
 - Tab views no longer overlap: a `.view { display: block }` rule was overriding
   the `hidden` attribute, so all three modes rendered at once. The `hidden`
   attribute now always wins.

@@ -2,7 +2,7 @@
 // network disabled after the first visit. User data is never cached here — it
 // lives in IndexedDB.
 
-const CACHE = 'fichas-shell-v1';
+const CACHE = 'fichas-shell-v2';
 
 const SHELL = [
   './',
@@ -39,6 +39,9 @@ self.addEventListener('activate', (event) => {
   );
 });
 
+// Network-first for everything same-origin: always serve fresh code when online
+// (so updates are never masked by a stale cache), and fall back to the precached
+// shell when offline. The cache is refreshed on every successful fetch.
 self.addEventListener('fetch', (event) => {
   const { request } = event;
   if (request.method !== 'GET') return;
@@ -46,26 +49,24 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
 
-  // Navigations: network-first, fall back to the cached shell when offline.
-  if (request.mode === 'navigate') {
-    event.respondWith(
-      fetch(request).catch(() => caches.match('index.html').then((r) => r || caches.match('./')))
-    );
-    return;
-  }
-
-  // Static assets: cache-first, then network (and cache the result).
   event.respondWith(
-    caches.match(request).then(
-      (cached) =>
-        cached ||
-        fetch(request).then((response) => {
-          if (response && response.ok) {
-            const copy = response.clone();
-            caches.open(CACHE).then((cache) => cache.put(request, copy));
+    fetch(request)
+      .then((response) => {
+        if (response && response.ok) {
+          const copy = response.clone();
+          caches.open(CACHE).then((cache) => cache.put(request, copy));
+        }
+        return response;
+      })
+      .catch(() =>
+        caches.match(request).then((cached) => {
+          if (cached) return cached;
+          // For navigations with no cached match, fall back to the app shell.
+          if (request.mode === 'navigate') {
+            return caches.match('index.html').then((r) => r || caches.match('./'));
           }
-          return response;
+          return Response.error();
         })
-    )
+      )
   );
 });
