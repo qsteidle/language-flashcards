@@ -1,0 +1,30 @@
+{
+  "name": "language-flashcards",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Offline-first Spanish flashcard PWA with session-based spaced repetition.",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/serve.js",
+    "serve": "node scripts/serve.js",
+    "test:unit": "vitest run",
+    "test:unit:watch": "vitest",
+    "test:e2e": "playwright test",
+    "test": "vitest run && playwright test",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check:mime": "node scripts/check-no-hardcoded-mime.js",
+    "check:forms": "node scripts/check-no-form-submit.js",
+    "check:all": "npm run lint && npm run format:check && npm run check:mime && npm run check:forms && npm run test:unit"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.1",
+    "@eslint/js": "^9.17.0",
+    "@playwright/test": "^1.49.1",
+    "eslint": "^9.17.0",
+    "fake-indexeddb": "^6.0.0",
+    "prettier": "^3.4.2",
+    "vitest": "^2.1.8"
+  }
+}

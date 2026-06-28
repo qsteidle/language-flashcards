@@ -1,0 +1,11 @@
+node_modules/
+test-results/
+playwright-report/
+.playwright/
+coverage/
+*.local
+
+# Never commit real personal study data
+*.deck.json
+my-deck*.json
+!fixtures/*.json

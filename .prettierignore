@@ -1,0 +1,6 @@
+node_modules/
+test-results/
+playwright-report/
+package-lock.json
+CHANGELOG.md
+IMPLEMENTATION_PLAN.md
